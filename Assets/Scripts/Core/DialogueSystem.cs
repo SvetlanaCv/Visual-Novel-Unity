@@ -27,6 +27,8 @@ public class DialogueSystem : MonoBehaviour
 	{
 		StopSpeaking();
 		speechText.text = targetSpeech;
+		speechPanel.SetActive(true);
+		namePanel.SetActive(true);
 		speaking = StartCoroutine(Speaking(speech, false, speaker));
 	}
 
@@ -97,6 +99,7 @@ public class DialogueSystem : MonoBehaviour
     {
 		StopSpeaking();
 		speechPanel.SetActive(false);
+		namePanel.SetActive(false);
     }
 
 	[System.Serializable]
@@ -105,11 +108,13 @@ public class DialogueSystem : MonoBehaviour
 		/// <summary>
 		/// The main panel containing all dialogue related elements on the UI
 		/// </summary>
+		public GameObject namePanel;
 		public GameObject speechPanel;
 		public Text speakerNameText;
 		public Text speechText;
 	}
 	public GameObject speechPanel { get { return elements.speechPanel; } }
+	public GameObject namePanel { get { return elements.namePanel; } }
 	public Text speakerNameText { get { return elements.speakerNameText; } }
 	public Text speechText { get { return elements.speechText; } }
 }
